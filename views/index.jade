@@ -1,0 +1,23 @@
+html
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width initial-scale=1')
+        
+        link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css', rel='stylesheet')
+
+        title S3 Browser
+    body
+        .container(style='margin-top: 15px')
+            .panel.panel-default
+                .panel-heading
+                    h4.panel-title
+                        | #{dirname}
+                .panel-body
+                    .list-group
+                        each file in contents
+                            a.list-group-item(target='_blank', href='/stream/' + file.Key) !{ file.Key }
+                    
+        
+        script(src='http://code.jquery.com/jquery-2.1.4.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
