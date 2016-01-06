@@ -19,11 +19,11 @@ html
                                 | !{ bucket }
 
                         each dirlabel in dirname.split('/')
+                            - dirpath += dirlabel + '/';
+
                             li
                                 a(href='/browse/' + dirpath)
                                     | !{ dirlabel }
-                            
-                            - dirpath += dirlabel + '/';
                 .panel-body
                     .list-group
                         each dir in commonPrefixes
