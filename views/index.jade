@@ -11,12 +11,25 @@ html
         .container(style='margin-top: 15px')
             .panel.panel-default
                 .panel-heading
-                    h4.panel-title
-                        | #{dirname}
+                    ol.breadcrumb
+                        - dirpath = '';
+
+                        li
+                            a(href='/browse/')
+                                | !{ bucket }
+
+                        each dirlabel in dirname.split('/')
+                            li
+                                a(href='/browse/' + dirpath)
+                                    | !{ dirlabel }
+                            
+                            - dirpath += dirlabel + '/';
                 .panel-body
                     .list-group
+                        each dir in commonPrefixes
+                            a.list-group-item(href='/browse/' + dir.Prefix) !{ path.basename(dir.Prefix) }
                         each file in contents
-                            a.list-group-item(target='_blank', href='/stream/' + file.Key) !{ file.Key }
+                            a.list-group-item(target='_blank', href='/stream/' + file.Key) !{ path.basename(file.Key) }
                     
         
         script(src='http://code.jquery.com/jquery-2.1.4.min.js')
