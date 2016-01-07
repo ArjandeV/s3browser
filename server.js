@@ -71,6 +71,6 @@ app.get('/stream/*', function(req, res) {
     stream.pipe(res);
 });
 
-let server = app.listen(8000);
+let server = app.listen(80);
 
-console.log('s3browser is running on port 8000');
+console.log('s3browser is running on port 80');
